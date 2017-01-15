@@ -11,11 +11,11 @@
   text-align: center;
   width: 200px;
   padding: 10px;
-  border: 1px solid #000000;
 }
 
 #clock {
   padding: 10px;
+  border: 1px solid #000000;
 }
 </style>
 
@@ -37,7 +37,7 @@ function displayTime() {
   var m = now.getMinutes();
   var s = now.getSeconds();
 
-  var timeString = formatHour(h) + ":" + padZero(m) + ":" + padZero(s) + getTimePeriod(h);
+  var timeString = formatHour(h) + ":" + padZero(m) + ":" + padZero(s) + " " + getTimePeriod(h);
   document.querySelector('#current-time').innerHTML = timeString;
 }
 
