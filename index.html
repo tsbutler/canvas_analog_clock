@@ -29,9 +29,12 @@
 </canvas>
 
 <script>
-document.addEventListener('DOMContentLoaded', displayTime);
+document.addEventListener('DOMContentLoaded', startTimer);
 
-
+function startTimer() {
+  setInterval(displayTime, 1000);
+  displayTime();
+}
 
 function displayTime() {
     var now = new Date();
