@@ -75,6 +75,8 @@ function displayTime() {
         context.lineTo(targetX, targetY); // Draw a line outwards
         context.stroke();
     }
+
+context.clearRect(0, 0, canvas.width, canvas.height);
      
 drawArm(h / 12, 10, 0.50, '#000000'); // Hour
 drawArm(m / 60,  4, 0.75, '#000000'); // Minute
