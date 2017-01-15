@@ -31,12 +31,12 @@
 <script>
 document.addEventListener('DOMContentLoaded', displayTime);
 
-function displayTime() {
-  var now = new Date();
+var now = new Date();
   var h = now.getHours();
   var m = now.getMinutes();
   var s = now.getSeconds();
-
+  
+function displayTime() {
   var timeString = formatHour(h) + ":" + padZero(m) + ":" + padZero(s) + " " + getTimePeriod(h);
   document.querySelector('#current-time').innerHTML = timeString;
 }
@@ -53,7 +53,16 @@ var clockRadius = 100;
 var clockX = canvas.width / 2;
 var clockY = canvas.height / 2;
 
-//<--- Put math here later.
+//Define Tau.  It's not a default.
+Math.TAU = 2 * Math.PI;
+
+var hArmRadians = Math.TAU * (h / 12);
+var hArmLength = clockRadius;
+
+//If we start from the center of the clock,
+// this is where the x and y value the other end of the arm should point to
+var targetX = clockX + Math.cos(hArmRadians - (Math.TAU/4)) * hArmLength;
+var targetY = clockY + Math.sin(hArmRadians - (Math.TAU/4)) * hArmLength;
 
 //The line should be ten pixels thick and red.
 context.lineWidth = 10;
@@ -61,7 +70,16 @@ context.strokeStyle = '#DD0000';
 
 context.beginPath();
 context.moveTo(clockX, clockY); //Start at the center
-context.lineTo(clockX + clockRadius, clockY); //Draw to the right
+context.lineTo(targetX, targetY); //Draw a line outwards
+context.stroke();
+
+//The line should be 5 pixels thick and black.
+context.lineWidth = 5;
+context.strokeStyle = '#000000';
+
+context.beginPath();
+context.moveTo(clockX, clockY); //Start at the center
+context.lineTo(clockX, clockY - clockRadius); //Draw straight up
 context.stroke();
 
 function padZero(num) {
