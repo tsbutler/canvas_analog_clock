@@ -32,9 +32,8 @@
 document.addEventListener('DOMContentLoaded', displayTime);
 
 function displayTime() {
-  //Just to test if the JavaScript gets loaded properly. You can remove this later!
-  document.querySelector("#current-time").innerHTML = "JavaScript is working.  Now get to coding!";
-
+  var now = new Date();
+  document.querySelector('#current-time').innerHTML = now.toString();
 }
 
 </script>
