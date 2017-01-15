@@ -65,7 +65,7 @@ function displayTime() {
         var targetY = clockY + Math.sin(armRadians) * (armLength * clockRadius);
      
         context.lineWidth = armThickness;
-        context.strokeStyle = '#DD0000'; // RED
+        context.strokeStyle = armColor;
      
         context.beginPath();
         context.moveTo(clockX, clockY); // Start at the center
