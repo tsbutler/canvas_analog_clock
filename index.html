@@ -41,6 +41,14 @@ function displayTime() {
   document.querySelector('#current-time').innerHTML = timeString;
 }
 
+// --- Analog Clock --- //
+var canvas = document.querySelector('#clock');
+var context = canvas.getContext("2d");
+
+//You can change this to make the clock as big or as small as you like.
+//Just remember to adjust the canvas size as necessary.
+var clockRadius = 100;
+
 function padZero(num) {
   if (num < 10) {
     return "0" + String(num);
